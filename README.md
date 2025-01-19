@@ -43,6 +43,10 @@ This extension requires a backend API to function properly. Follow these steps t
 3. Install the required dependencies:
 
 
+## Architectural Diagram
+![Architectural Diagram]("ai_ad_buster_architecture.png")
+
+
 ## Architecture
 
 The Ad Content Transformer extension follows a multi-step process to detect, analyze, and transform ad content on web pages. Here's a detailed breakdown of the architecture:
