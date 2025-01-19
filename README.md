@@ -44,7 +44,7 @@ This extension requires a backend API to function properly. Follow these steps t
 
 
 ## Architectural Diagram
-![Architectural Diagram]("ai_ad_buster_architecture.png")
+![Architectural Diagram](ai_ad_buster_architecture.png)
 
 
 ## Architecture
