@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const modeDescriptions = {
     default: 'Transform ads with related content',
     vampire: 'Replace ads with spooky vampire content',
-    exorcism: 'Completely remove ad elements'
+    exorcism: 'Completely remove ad elements',
+     sarcastic: 'roast ads with sarcastically'
   };
 
   // Load saved settings

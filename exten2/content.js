@@ -4,7 +4,6 @@ console.log('Content script loaded');
 let isEnabled = false;
 let currentMode = 'default';
 
-// Step 1: Initial Content Extraction (class and id based only)
 function extractAdElements() {
   console.log('Extracting ad elements');
   const adPatterns = ['ad', 'advertisement', 'sponsored', 'promotion',"Ad"];
@@ -20,7 +19,6 @@ function extractAdElements() {
   return elements;
 }
 
-// Step 2: LLM Detector for remaining content
 async function llmDetector(content) {
   return new Promise((resolve) => {
     chrome.runtime.sendMessage({ action: "llmDetector", content: content }, response => {
@@ -35,7 +33,6 @@ async function llmDetector(content) {
   });
 }
 
-// Step 3: LLM Generator
 async function llmGenerator(content, mode, pageContent) {
   return new Promise((resolve) => {
     chrome.runtime.sendMessage({ action: "llmGenerator", content: content, mode: mode, pageContent: pageContent }, response => {
@@ -49,7 +46,6 @@ async function llmGenerator(content, mode, pageContent) {
   });
 }
 
-// Process and transform ad content
 async function processAdElement(element_array, mode, pageContent) {
   // const originalContent = element.innerHTML;
   const innerHtmlContent = []
@@ -60,9 +56,7 @@ async function processAdElement(element_array, mode, pageContent) {
 
   console.log("after loop  , ", innerHtmlContent)
   const newContents = await llmGenerator(innerHtmlContent, mode, pageContent);
-  // for (const element in element_array){
-  //   element.innerHTML = newContent;   
-  // }
+
   for (let i = 0; i < element_array.length; i++) {
     element_array[i].innerHTML = newContents[i];
     applyStyle(element_array[i], mode);
@@ -72,7 +66,7 @@ async function processAdElement(element_array, mode, pageContent) {
 }
 
 function applyStyle(element, mode) {
-  element.classList.remove('ad-transform-default', 'ad-transform-vampire', 'ad-transform-exorcism');
+  element.classList.remove('ad-transform-default', 'ad-transform-vampire', 'ad-transform-exorcism','ad-transform-sarcastic');
   element.classList.add(`ad-transform-${mode}`);
 
   switch (mode) {
@@ -82,6 +76,9 @@ function applyStyle(element, mode) {
     case 'exorcism':
       element.style.display = 'none';
       break;
+    case 'sarcastic':
+      element.style.display = '';
+      break;
     default:
       element.style.filter = '';
   }
@@ -89,13 +86,7 @@ function applyStyle(element, mode) {
 
 // Main execution
 async function main() {
-//   const adElements = extractAdElements();
   const pageContent = document.body.innerText;
-
-//   // Process definite ad elements
-//   for (const element of adElements) {
-//     await processAdElement(element, currentMode, pageContent);
-//   }
 
   const processedElements = new Set();
   const adElements = extractAdElements();
@@ -121,8 +112,6 @@ async function main() {
   console.log(remainingContent)
   
 
-  // Process remaining content with LLM detector
-//   const remainingContent = document.body.innerHTML;
   const detectedAdContent = await llmDetector(remainingContent);
   console.log("detectedAdContent is , ", detectedAdContent)
 
@@ -138,11 +127,8 @@ async function main() {
     });
   }
 
-  // Process LLM detected ad content
   const llmDetectedAds = document.querySelectorAll('.llm-detected-ad');
-  // for (const element of llmDetectedAds) {
-  //   await processAdElement(element, currentMode, pageContent);
-  // }
+
   processAdElement(llmDetectedAds, currentMode, pageContent);
 }
 

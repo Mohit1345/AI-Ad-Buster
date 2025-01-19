@@ -5,17 +5,18 @@ import { GoogleGenerativeAI, SchemaType } from '@google/generative-ai';
 
 import dotenv from 'dotenv';
 dotenv.config(); 
-// Access the API key
 
 
-// Initialize Express
+
+
 const app = express();
 const PORT = 3000;
 
 // Middleware
 app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
-// Initialize GoogleGenerativeAI
+
+
 let apiKey = '';
 app.post('/set-api-key', (req, res) => {
     const { apiKey: newApiKey } = req.body;
@@ -26,7 +27,7 @@ app.post('/set-api-key', (req, res) => {
     apiKey = newApiKey; // Store the API key
     console.log('API Key received:', apiKey);
 
-    // Proceed to the next screen (in your case, maybe provide success response)
+
     res.status(200).json({ message: 'API Key set successfully' });
 });
 
@@ -85,10 +86,6 @@ app.listen(PORT, () => {
 
 
 function convertToJson(inputString) {
-    // Ensure the input string uses double quotes for valid JSON format
-    // let validJsonString = inputString.replace(/'/g, '"');
-    
-    // Try parsing the string into a JSON array
     try {
         return JSON.parse(inputString);
     } catch (error) {
@@ -114,7 +111,7 @@ generationConfig: {
 },
 });
 
-// Function to interact with the LLM
+
 async function llm(innerData, detector = false,mode,pageContent) {
     let prompt = "";
 
@@ -136,18 +133,15 @@ Dont return just names of divs/tags, return complete data in it`;
                   case 'exorcism':
                     prompt = ''; // Content will be removed in the content script
                     break;
+                case 'sarcastic':
+                    prompt = `Create short, sarcastic, and roast-style descriptions for each ad in the array ${innerData}. The content should replace the current advertisement text with a biting, humorous tone, implying that the ad has been blocked by an 'Ad Blocker.' The descriptions should subtly mock the ads and their failure to get through, with a tone that blends sarcasm and humor.
+
+The new text should be sharp and witty, blending seamlessly with the overall page content ${pageContent} while maintaining a lighthearted roast vibe.`; // Content will be removed in the content script
+                    break;
                   default:
                     prompt = `Transform the ad contents for each item provided in the array, ${innerData}, into ad description describing about ad which is being blocked by our ad blocker now, ensuring a cohesive and fluid presentation.Don't generate more then the given array of ads , one for each making sure output array length equal to input array.`;
                 }
 
-//         prompt = `Below is the inner text of a webpage:
-
-// Now transform them into text-based entities that blend seamlessly with the rest of the webpage.
-// Generate a short (maybe even spooky) description of the ad content.
-
-// ${innerData}
-
-// return generated short description.`;
     }
     console.log("prompt for this is ",prompt)
 

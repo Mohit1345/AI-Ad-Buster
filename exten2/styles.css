@@ -1,11 +1,11 @@
-/* Container styling */
+
 #adContentTransformer {
   font-family: 'Roboto', sans-serif;
   background: #ffffff;
-  border-radius: 12px; /* Reduced border radius for a sharper look */
+  border-radius: 12px; 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 10px; /* Reduced padding for a tighter layout */
-  max-width: 500px; /* Adjusted width for a more compact fit */
+  padding: 10px;
+  max-width: 500px; 
   width: 100%;
   box-sizing: border-box;
   margin: 0px auto;
@@ -15,32 +15,32 @@
   word-wrap: break-word;
 }
 
-/* Header styling */
+
 #adContentTransformer .transformer-header {
-  font-size: 20px; /* Smaller header font size */
+  font-size: 20px;
   color: #3a79e3;
   text-align: center;
-  margin-bottom: 10px; /* Reduced bottom margin */
+  margin-bottom: 10px; 
   font-weight: 600;
   word-wrap: break-word;
 }
 
-/* Input styling */
+
 #adContentTransformer .transformer-label {
-  font-size: 14px; /* Smaller font size */
+  font-size: 14px; 
   color: #555;
-  margin-bottom: 6px; /* Reduced bottom margin */
+  margin-bottom: 6px; 
   display: block;
 }
 
 #adContentTransformer .transformer-input {
   width: 100%;
-  padding: 10px; /* Reduced padding for a smaller input box */
-  margin-bottom: 16px; /* Reduced bottom margin */
+  padding: 10px;
+  margin-bottom: 16px; 
   border: 1px solid #ddd;
   border-radius: 8px;
   background: #f9f9f9;
-  font-size: 14px; /* Smaller font size */
+  font-size: 14px; 
   transition: border-color 0.3s ease, background-color 0.3s ease;
   box-sizing: border-box;
 }
@@ -52,19 +52,19 @@
   outline: none;
 }
 
-/* Toggle Switch */
+
 #adContentTransformer .transformer-toggle-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap:10px;
-  margin-bottom: 16px; /* Reduced bottom margin */
+  margin-bottom: 16px; 
 }
 
 #adContentTransformer .transformer-toggle {
   position: relative;
-  width: 65px; /* Smaller width for the toggle */
-  height: 24px; /* Smaller height for the toggle */
+  width: 65px; 
+  height: 24px; 
 }
 
 #adContentTransformer .transformer-toggle input {
@@ -102,24 +102,24 @@
 }
 
 #adContentTransformer .transformer-toggle input:checked + .transformer-slider:before {
-  transform: translateX(24px); /* Smaller distance for the toggle */
+  transform: translateX(24px); 
 }
 
 #adContentTransformer .transformer-toggle-label {
-  font-size: 14px; /* Smaller font size */
+  font-size: 14px;
   color: #333;
   font-weight: 500;
 }
 
-/* Select styling */
+
 #adContentTransformer .transformer-select {
   width: 100%;
-  padding: 10px; /* Reduced padding for a smaller select box */
+  padding: 10px; 
   border: 1px solid #ddd;
   border-radius: 8px;
   background: #f9f9f9;
-  font-size: 14px; /* Smaller font size */
-  margin-bottom: 12px; /* Reduced bottom margin */
+  font-size: 14px; 
+  margin-bottom: 12px;
   transition: border-color 0.3s ease, background-color 0.3s ease;
   box-sizing: border-box;
 }
@@ -131,12 +131,11 @@
   outline: none;
 }
 
-/* Mode Description */
 #adContentTransformer .transformer-mode-description {
-  font-size: 14px; /* Smaller font size */
+  font-size: 14px;
   color: #666;
   font-style: italic;
-  margin-top: 6px; /* Reduced top margin */
+  margin-top: 6px; 
   word-wrap: break-word;
 }
 
